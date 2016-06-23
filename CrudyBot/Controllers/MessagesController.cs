@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace CrudyBot
 {
-    [BotAuthentication]
+    //[BotAuthentication]
     public class MessagesController : ApiController
     {
         /// <summary>
