@@ -1,0 +1,42 @@
+﻿@model CrudyBot.Models.BotComm
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BotComm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResponseText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResponseText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MIMEType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MIMEType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

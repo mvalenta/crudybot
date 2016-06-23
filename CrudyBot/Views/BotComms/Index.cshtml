@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CrudyBot.Models.BotComm>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MessageText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResponseText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MIMEType)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MessageText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResponseText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MIMEType)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
