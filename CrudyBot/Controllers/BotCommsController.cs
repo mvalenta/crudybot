@@ -46,7 +46,7 @@ namespace CrudyBot.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Create([Bind(Include = "Id,MessageText,ResponseText,MIMEType")] BotComm botComm)
+        public virtual ActionResult Create([Bind(Include = "Id,MessageText,ResponseText")] BotComm botComm)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace CrudyBot.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Edit([Bind(Include = "Id,MessageText,ResponseText,MIMEType")] BotComm botComm)
+        public virtual ActionResult Edit([Bind(Include = "Id,MessageText,ResponseText")] BotComm botComm)
         {
             if (ModelState.IsValid)
             {

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using CrudyBot.Models;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Connector.Utilities;
 using Newtonsoft.Json;
@@ -23,10 +25,39 @@ namespace CrudyBot
             if (message.Type == "Message")
             {
                 // calculate something for us to return
-                int length = (message.Text ?? string.Empty).Length;
+                List<BotComm> list;
+                using (var db = new BotCommsContext())
+                {
+                    list = db.BotComms.ToList();
+                }
+
+                if (message.Text.ToLower().Contains("commands"))
+                {
+                    return
+                        message.CreateReplyMessage(
+                            list.Select(x => x.MessageText)
+                                .ToList()
+                                .Aggregate((current, next) => current + "\n\n" + next));
+                }
+
+                var responseText = list.FirstOrDefault(x => message.Text.ToLower().Contains(x.MessageText.ToLower()))?.ResponseText.Replace("\\n", "\n");
+
+                if (!string.IsNullOrEmpty(responseText))
+                {
+                    return message.CreateReplyMessage(responseText);
+                }
+
+                // fetch our state associated with a user in a conversation. If we don't have state, we get default(T)
+                var counter = message.GetBotPerUserInConversationData<int>("counter");
+
+                // create a reply message   
+                Message replyMessage = message.CreateReplyMessage($"{++counter} You said: {message.Text}");
+
+                // save our new counter by adding it to the outgoing message
+                replyMessage.SetBotPerUserInConversationData("counter", counter);
 
                 // return our reply to the user
-                return message.CreateReplyMessage($"You sent {length} characters");
+                return replyMessage;
             }
             else
             {

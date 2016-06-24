@@ -17,9 +17,6 @@
         <th>
             @Html.DisplayNameFor(model => model.ResponseText)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MIMEType)
-        </th>
         <th></th>
     </tr>
 
@@ -30,9 +27,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ResponseText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MIMEType)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

@@ -27,7 +27,5 @@ namespace CrudyBot.Models
         public int Id { get; set; }
         public string MessageText { get; set; }
         public string ResponseText { get; set; }
-        [StringLength(255)]
-        public string MIMEType { get; set; }
     }
 }
