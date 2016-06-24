@@ -10,18 +10,18 @@ using CrudyBot.Models;
 
 namespace CrudyBot.Controllers
 {
-    public class BotCommsController : Controller
+    public partial class BotCommsController : Controller
     {
         private BotCommsContext db = new BotCommsContext();
 
         // GET: BotComms
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View(db.BotComms.ToList());
         }
 
         // GET: BotComms/Details/5
-        public ActionResult Details(int? id)
+        public virtual ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -36,7 +36,7 @@ namespace CrudyBot.Controllers
         }
 
         // GET: BotComms/Create
-        public ActionResult Create()
+        public virtual ActionResult Create()
         {
             return View();
         }
@@ -46,7 +46,7 @@ namespace CrudyBot.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,MessageText,ResponseText,MIMEType")] BotComm botComm)
+        public virtual ActionResult Create([Bind(Include = "Id,MessageText,ResponseText,MIMEType")] BotComm botComm)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +59,7 @@ namespace CrudyBot.Controllers
         }
 
         // GET: BotComms/Edit/5
-        public ActionResult Edit(int? id)
+        public virtual ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -78,7 +78,7 @@ namespace CrudyBot.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,MessageText,ResponseText,MIMEType")] BotComm botComm)
+        public virtual ActionResult Edit([Bind(Include = "Id,MessageText,ResponseText,MIMEType")] BotComm botComm)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace CrudyBot.Controllers
         }
 
         // GET: BotComms/Delete/5
-        public ActionResult Delete(int? id)
+        public virtual ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -107,7 +107,7 @@ namespace CrudyBot.Controllers
         // POST: BotComms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public virtual ActionResult DeleteConfirmed(int id)
         {
             BotComm botComm = db.BotComms.Find(id);
             db.BotComms.Remove(botComm);

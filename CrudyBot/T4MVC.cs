@@ -27,6 +27,8 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static partial class MVC
 {
+    public static CrudyBot.Controllers.BotCommsController BotComms = new CrudyBot.Controllers.T4MVC_BotCommsController();
+    public static CrudyBot.Controllers.DemoController Demo = new CrudyBot.Controllers.T4MVC_DemoController();
     public static CrudyBot.Controllers.HomeController Home = new CrudyBot.Controllers.T4MVC_HomeController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
